@@ -1,0 +1,29 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+					  Scanner sc = new Scanner (System.in);
+					  int A=sc.nextInt();
+					  int B= sc.nextInt();
+					  int C=sc.nextInt();
+					System.out.println( middleOfThree(A, B, C) );  
+	}
+	 public static int middleOfThree(int a, int b,
+                                          int c)
+    {
+        // Checking for b
+        if ((a < b && b < c) || (c < b && b < a))
+            return b;
+ 
+        // Checking for a
+        else if ((b < a && a < c) || (c < a && a < b))
+        return a;
+ 
+        else
+        return c;
+    }
+}
