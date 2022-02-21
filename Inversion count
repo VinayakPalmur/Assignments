@@ -1,0 +1,103 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	 
+	  public static long count = 0;
+
+	 public static void main(String[]args) {
+        
+        Scanner scn = new Scanner(System.in);
+        
+        int n = scn.nextInt();
+        
+        long[] arr = new long[n];
+        
+        for(int i=0; i<n; i++){
+            arr[i] = scn.nextLong();
+        }
+        
+        ms(arr,0,n-1);
+        
+        System.out.println(count);
+    }
+    
+    public static long[] m2s(long[] l, long[] r){
+        
+        
+        int n = l.length;
+        int m = r.length;
+        
+        int i=0;
+        int j=0;
+        
+        long[] ans = new long[n+m];
+        
+        int k = 0;
+        
+        while(i < n && j < m){
+            long lv = l[i];
+            long rv = r[j];
+            
+            if(lv <= rv){
+                ans[k] = lv;
+                k++;
+                i++;
+            }else if(lv > rv){
+                ans[k] = rv;
+                count += (n-i);
+                k++;
+                j++;
+            } 
+        }
+        
+        
+        while(i<n){
+            ans[k] = l[i];
+            k++;
+            i++;
+        }
+        
+        
+        while(j<m){
+            ans[k] = r[j];
+            k++;
+            j++;
+        }
+        
+        
+        return ans;
+        
+        
+        
+    }
+    
+    
+    public static long[] ms(long[] arr, int lo, int hi){
+        
+        if(lo > hi){
+            return null;
+        }else if(lo == hi){
+            long[] ba = new long[1];
+            ba[0] = arr[lo];
+            return ba;
+        }
+        
+        
+        
+        int mid = (lo + hi)/2;
+        
+        long[] l = ms(arr,lo,mid);
+        
+        long[] r = ms(arr,mid+1,hi);
+        
+        long[] ans = m2s(l,r);
+        
+        return ans;
+    
+    }
+    
+    
+}
