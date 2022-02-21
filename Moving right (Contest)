@@ -1,0 +1,34 @@
+#include <bits/stdc++.h> // header file includes every Standard library
+using namespace std;
+
+int main() {
+
+	// Your code here
+	long long n,count=0,maxi=0;
+    cin>>n;
+    long long arr[n];
+    for(long long i=0;i<n;i++){
+        cin>>arr[i];
+    }
+
+    for(long long i=0;i<n-1;i++){
+        if(arr[i+1]<=arr[i]){
+            count+=1;
+        }
+        else{
+            count=0;
+        }
+        if(count>maxi){
+            maxi=count;
+        }
+    }
+    cout<<maxi<<endl;
+
+       
+
+
+    
+	// Your code here
+	return 0;
+
+}
