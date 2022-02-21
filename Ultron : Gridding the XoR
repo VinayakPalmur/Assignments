@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+typedef long long ll;
+ 
+int t;
+ll r1, c1, r2, c2;
+ 
+int getVal(int n, int k)
+{
+	if (n == 0 && k == 0) return 1;
+	if (n % 2 < k % 2) return 0;
+	return getVal(n / 2, k / 2);
+}
+ 
+bool Get(ll r1, ll c1)
+{
+	if (r1 < 1 || c1 < 1) return false;
+	bool a = true;
+	bool b = bool(r1 & 1ll);
+	bool c = bool(((r1 + c1 + 1) & r1) == r1);
+	return (a ^ b ^ c);
+}
+ 
+bool Get(ll r1, ll c1, ll r2, ll c2)
+{
+	return (Get(r2, c2) ^ Get(r1 - 1, c2) ^ Get(r2, c1 - 1) ^ Get(r1 - 1, c1 - 1));
+}
+ 
+int main()
+{
+	
+		scanf("%lld %lld %lld %lld", &r1, &r2, &c1, &c2);
+		ll res = 0;
+		for (ll i = 0; i < 62; i++) {
+			ll delt = (1ll << i) - 1ll;
+			if (Get(r1 - delt, c1 + delt, r2 - delt, c2 + delt))
+				res |= 1ll << i;
+		}
+		printf("%lld\n", res);
+	
+	return 0;
+}
