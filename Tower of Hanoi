@@ -1,0 +1,28 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+                      Scanner sc=new Scanner(System.in);
+                      int n= sc.nextInt();
+                      Main t= new Main();
+                      t.towerhanoi(n, "A", "C", "B");
+
+	}
+    void towerhanoi (int n, String A, String C, String B)
+    {
+        if (n<=0)
+        {
+            return;
+        }
+        else
+        {
+            towerhanoi(n-1, A, B, C);
+            System.out.println(n+ ":" + A + "->" +C);
+            towerhanoi(n-1, B, C, A);
+        }
+    }
+}
