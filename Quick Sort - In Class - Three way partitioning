@@ -1,0 +1,22 @@
+public static ArrayList<Integer> threeWayPartition(ArrayList<Integer> A, int low, int high)
+{
+	// Your code here
+	 int i = 0, n = A.size(), j=0, end=n-1; 
+    while(j<=end)
+    {
+        int temp=0;
+        if (A.get(j) < low) 
+        { 
+            Collections.swap(A, i, j);
+            i++;
+            j++;
+        }
+        else if(A.get(j) > high){
+            Collections.swap(A, end,j);
+            end--;
+        }
+
+        else j++;
+    }
+	return A;
+}
