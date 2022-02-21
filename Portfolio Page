@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1> Alok Kumar Maurya</h1>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg">
+<a href="https://www.linkedin.com/in/nitin-gaur1999/">link</a>
+<section id="skills">
+    <p >Web devlopment</p>
+ </section> 
+ <section id ="projects">  
+      <ul>
+        <li>tic tac toe</li>
+        <li>web devlopment</li>
+        <li>Services</li>
+        <li>Contact</li>
+    </ul>
+</section>
+</body>
+
+</html>
