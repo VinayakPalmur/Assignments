@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> myntra </title>
+    </head>
+    <body>
+      <table>
+        <thead>
+            <th>Part</th>
+            <th>XS</th>
+            <th>S</th>
+            <th>M</th> 
+            <th>L</th>
+            <th>XL</th>
+        </thead>
+        <tbody>
+            <tr id="r1">
+                <td>Waist</td>
+                <td>25</td>
+                <td>28</td>
+                <td>30</td>
+                <td>31</td>
+                <td>32</td>
+            </tr>
+            <tr id="r2">
+                <td>Chest</td>
+                <td>34</td>
+                <td>34</td>
+                <td>38</td>
+                <td>40</td>
+                <td>41</td>
+                </tr>
+            <tr id="r3">
+                <td>Sleeve</td>
+                <td>23</td>
+                <td>24</td>
+                <td>24</td>
+                <td>25</td>
+                <td>25</td>
+                </tr>
+        </tbody>
+    </table>
+    </body>
+</html>
