@@ -1,0 +1,27 @@
+#include <bits/stdc++.h> // header file includes every Standard library
+using namespace std;
+#define lli long long int
+int main() {
+   lli n,k;
+   cin>>n>>k;
+   lli a[n];
+   for(lli i=0;i<n;i++)
+   cin>>a[i];
+   unordered_map<lli,lli>m;
+   lli c=0,d=0;
+   for(lli i=0;i<n;i++){
+	   if(a[i]%k==0)
+	   d++;
+	   if((m.find(abs(a[i]%k-k))!=m.end()))
+	   c+=m[abs((a[i]%k)-k)];
+	  /* else if((m.find(a[i]%k)!=m.end()))
+	   c+=m[a[i]%k];*/
+	
+	   m[a[i]%k]++;
+   }
+   if(d>1)
+   c+=(d*(d-1))/2;
+   cout<<c;
+	// Your code here
+	return 0;
+}
