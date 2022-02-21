@@ -1,0 +1,66 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	  static String idToShortURL(int n)
+    {
+        
+        char map[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+     
+        StringBuffer shorturl = new StringBuffer();
+     
+        
+        while (n > 0)
+        {
+            
+            shorturl.append(map[n % 62]);
+            n = n / 62;
+        }
+     
+        
+        return shorturl.reverse().toString();
+    }
+     
+    
+    static int shortURLtoID(String shortURL)
+    {
+        int id = 0; 
+     
+        
+        for (int i = 0; i < shortURL.length(); i++)
+        {
+            if ('a' <= shortURL.charAt(i) &&
+                       shortURL.charAt(i) <= 'z')
+            id = id * 62 + shortURL.charAt(i) - 'a';
+            if ('A' <= shortURL.charAt(i) &&
+                       shortURL.charAt(i) <= 'Z')
+            id = id * 62 + shortURL.charAt(i) - 'A' + 26;
+            if ('0' <= shortURL.charAt(i) &&
+                       shortURL.charAt(i) <= '9')
+            id = id * 62 + shortURL.charAt(i) - '0' + 52;
+        }
+        return id;
+    }
+     
+    
+    public static void main (String[] args) throws IOException
+    {
+       
+       Scanner sc= new Scanner(System.in);
+       int t=sc.nextInt();
+       
+       while(t>0)
+       {
+           int n=sc.nextInt();
+           String shorturl = idToShortURL(n);
+           t--;
+             System.out.println( shorturl.toString()+" ");
+           
+       }
+        
+      
+      
+    }
+}
