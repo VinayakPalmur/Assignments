@@ -1,0 +1,43 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+ public static void main (String[] args) throws IOException {
+   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s = br.readLine();
+        String [] str = s.split(" ");
+  int x1 = Integer.parseInt(str[0]);
+  int y1 = Integer.parseInt(str[1]);
+  String s1 = br.readLine();
+  String [] str1 = s1.split(" ");
+  int x2 = Integer.parseInt(str1[0]);
+  int y2 = Integer.parseInt(str1[1]);
+  if(x1==x2&&y1>y2)
+  {
+   System.out.print("South");
+  }else if(x1==x2&&y1<y2)
+  {
+   System.out.print("North");
+  }else if(x1>x2&&y1==y2)
+  {
+   System.out.print("West");
+  }else if(x1<x2&&y1==y2)
+  {
+   System.out.print("East");
+  }else if(x1<x2&&y1>y2)
+  {
+   System.out.print("South East");
+  }else if(x1>x2&&y1>y2)
+  {
+   System.out.print("South West");
+  }else if(x1>x2&&y1<y2)
+  {
+   System.out.print("North West");
+  }else if(x1<x2&&y1<y2)
+  {
+   System.out.print("North East");
+  }
+ }
+}
