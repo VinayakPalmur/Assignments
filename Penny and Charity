@@ -1,0 +1,23 @@
+static int Charity(int N, int M){
+//Enter your code here
+    //return(M/N);
+if(N<M)
+
+{
+
+    if(M/N!=1) //each individual receives more than 1
+
+    return M/N;
+
+    else
+
+    return -1;
+
+}
+
+else
+
+    return -1;
+
+
+}
