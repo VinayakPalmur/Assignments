@@ -1,0 +1,33 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static int peakIndexInMountainArray(int[] A) {
+        int lo = 0, hi = A.length - 1;
+        while (lo < hi) {
+            int mi = lo + (hi - lo) / 2;
+            if (A[mi] < A[mi + 1])
+                lo = mi + 1;
+            else
+                hi = mi;
+        }
+		System.out.println(lo);
+        return lo;
+	}
+    
+	public static void main (String[] args) {
+                      // Your code here
+			Scanner sc = new Scanner(System.in);
+			int n =sc.nextInt();
+			int A[]=new int[n];
+			for(int i=0; i<n;i++)
+			{
+				A[i]=sc.nextInt();
+			}	
+				  peakIndexInMountainArray(A);
+				  
+
+	}
+}
