@@ -1,0 +1,54 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.lang.Math;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+    //    long t = Integer.parseInt(sc.nextLine());
+        long m = 1000000007;
+        //for(int i=0; i<t; i++) {
+            int a = sc.nextInt(); 
+            int b = sc.nextInt();
+            int c = sc.nextInt();
+            int d = sc.nextInt();
+            //iterativeWithMod(a, b, c, d, m);
+            long x = pow(c,d);
+            long y = iterativeWithMod(b, x, m-1);
+            long ans = iterativeWithMod(a, y, m);
+           
+            System.out.println(ans+" ");
+        //}
+        
+		
+	}
+    public static long pow(int c, int d)
+    {
+        long res1= 1 ;
+        while (d != 0) {
+      res1 *= c;
+      --d;
+    }
+        return res1;
+
+    }
+	
+	public static long iterativeWithMod(long a, long b, long c) {
+        long res = 1;
+      // a = a % m;
+
+        while(b != 0) {
+            if((b & 1) == 1) { // extract lsb and check if it is 1 i.e. odd number
+                res = (res * a) % c;
+            }
+            a = (a * a) % c;
+            b >>= 1;
+        }
+        return res;
+    }
+}
