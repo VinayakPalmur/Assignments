@@ -1,0 +1,50 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main()
+{
+    long N;
+    cin >> N;
+
+    vector<long> arr (N, 0);
+    for (long i =0 ; i < N; i ++) {
+        long inp;
+        cin >> inp;
+        arr[i] = inp;
+    }
+
+    vector<long> ans (arr.size(), 0);
+
+    long len = 1;
+    long targetSum = len;
+
+    while (len <= arr.size()) {
+
+        long index = 0;
+
+        while (arr[index] > len) {
+            index += 1;
+        }
+
+        long i = index;
+        for (; i < index + len; i ++) {
+            
+            if (arr[i] > len) {
+                break;
+            }
+        }
+
+        if (i == index + len) {
+            ans[len-1] = 1;
+        }
+
+        len += 1;
+    }
+
+    for (long i =0 ; i< ans.size(); i++) {
+        cout << ans[i] << " ";
+    }
+    
+    return 0;
+}
