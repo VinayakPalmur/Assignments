@@ -1,0 +1,27 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+		Scanner scn = new Scanner(System.in);
+		long x, y, n, sum1, sum2;
+		boolean isPass = true;
+		x = scn.nextLong();
+		y = scn.nextLong();
+		n = scn.nextLong();
+		for(int i = 1;i<=n;i++){
+		     sum1 = n - i * y;
+		     sum2 = n + i * y;
+			if(sum1 % x==0 || sum2 % x==0){
+				System.out.print("YES");
+				isPass = false;
+				break;
+			}
+		}
+		if(isPass == true){
+			System.out.print("NO");
+		}
+	}
+}
