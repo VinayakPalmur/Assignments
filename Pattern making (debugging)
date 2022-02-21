@@ -1,0 +1,12 @@
+public static void pattern_making(int n){
+           int t,i, m;
+          for(i=1-n;i<n;i++)
+          {
+              m=n-Math.abs(i);
+              for(t=1; t<=m; t++)
+              System.out.print(t+" ");
+              for(t=m-1; t>0; t--)
+              System.out.print(t+" ");
+              System.out.println();
+          }
+    }
