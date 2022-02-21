@@ -1,0 +1,33 @@
+#include <bits/stdc++.h> // header file includes every Standard library
+using namespace std;
+int n,k,ans;
+char a[1000+10],b[1000+10];
+int main() {
+
+	cin>>k;
+    cin>>a;
+    cin>>b;
+
+    int T=0,F=0;
+    n=strlen(a);
+
+    for(int i=0;i<n;i++){
+        if(a[i]==b[i]){
+            T++;
+        }
+
+        else{
+            F++;
+        }
+    }
+        ans=0;
+
+        if(T<=k){
+            ans=2*T+F-k;
+        }else{
+            ans=k+F;
+        }
+
+    cout<<ans<<endl;
+	return 0;
+}
