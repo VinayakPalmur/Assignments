@@ -1,0 +1,60 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+
+		int[] v = new int[n];
+
+		for (int i = 0; i < n; i ++) {
+			v[i] = s.nextInt();
+		}
+
+		int []maxFromEnd = new int[n + 1];
+		Arrays.fill(maxFromEnd, Integer.MIN_VALUE);
+		
+		// Create an array maxfromEnd
+		for (int i = v.length - 1; i >= 0; i--)
+		{
+			maxFromEnd[i] = Math.max(maxFromEnd[i + 1],
+									v[i]);
+		}
+		
+		int result = 0;
+		
+		for (int i = 0; i < v.length; i++)
+		{
+			int low = i + 1, high = v.length - 1,
+				ans = i;
+		
+			while (low <= high)
+			{
+				int mid = (low + high) / 2;
+			
+				if (v[i] < maxFromEnd[mid])
+				{
+					ans = Math.max(ans, mid);
+					low = mid + 1;
+				} else
+				{
+					high = mid - 1;
+				}
+			}
+			
+			// Keeping a track of the
+			// maximum difference in indices
+			result = Math.max(result, ans - i);
+		}
+		
+		if (result == 0) {
+			result -= 1;
+		}
+
+		System.out.print(result + "\n");
+	}
+}
