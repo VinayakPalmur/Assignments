@@ -1,0 +1,52 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+					  Scanner sc= new Scanner(System.in);
+					  int N = sc.nextInt();
+					  int [] Arr = new int [N+1];
+					  int temp=0;
+					  boolean res =true;
+					  for (int i=0; i<N; i++)
+					  {
+						  Arr[i]=sc.nextInt();
+					  }
+					  for(int i=2; i< Arr[0]; i++)
+					  {
+						  if(Arr[0]%i ==0)
+						  Arr[0] =i;
+					  }
+					  for(int i=0; i<N; i++)
+					  {
+						  for (int j=temp+1; j< Arr[i] ; j++)
+						  {
+							  if(Arr[i]%j==0)
+							  {
+								  Arr[i]=j;
+							  }
+						  }
+						  temp=Arr[i];
+					  }
+					  for(int i=0; i<N-1; i++)
+					  {
+						  if(Arr[i]>= Arr[i+1])
+						  {
+							  res=false;
+							  break;
+						  }
+					  }
+					  if(res==true)
+					  {
+						  System.out.println("YES");
+					  }
+					  else
+					  {
+						  System.out.println("NO");
+					  }
+					  
+	}
+}
