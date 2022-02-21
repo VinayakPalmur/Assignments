@@ -1,0 +1,6 @@
+static int Chocolates(int D, int N, int C){
+    //Enter your code here
+    int res=0;
+    res=((N*D)-N+C);
+    return res;
+}
