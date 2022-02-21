@@ -1,0 +1,44 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+					  Scanner sc = new Scanner(System.in);
+					  int n=sc.nextInt();
+					  int arr[]=new int[n];
+					  for(int i=0; i<n;i++)
+					  {
+						  arr[i]=sc.nextInt();
+					  }
+					  int k=4;
+				int sum= product( arr, n, k);
+
+if(sum%4==0)
+{
+System.out.println("YES");
+ }
+ else
+ System.out.println("NO");
+	}
+	public static int product(int arr[], int n, int k)
+{
+    int prod = 1;
+ 
+    // Traverse the array
+    for (int i = 0; i < n; i++) {
+ 
+        // If current element is divisible by k
+        // multiply with product so far
+        if (arr[i] % k == 0) {
+            prod *= arr[i];
+        }
+    }
+ //if (prod==true)
+ 
+    // Return calculated product
+    return prod;
+	}
+}
