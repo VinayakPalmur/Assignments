@@ -1,0 +1,42 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+					  Scanner scn = new Scanner(System.in);
+		long n = scn.nextLong();
+
+		if(n == 1){
+			System.out.println(2);
+			return;
+		}else if(n == 2){
+			System.out.println(1);
+			return;
+		}else if(n == 3){
+			System.out.println(0);
+			return;
+		}
+        
+		int count = 0;
+		long ans = 9999999999999999L;
+         
+
+		for(int i=60; i>=0; i--){
+          long val = ((long)1 << i);
+		  for(int j=i-1; j>=0; j--){
+		     long fval = val + ((long)1 << j);
+			 long diff = Math.abs(n - fval);
+			 ans = Math.min(ans,diff);
+			 if(ans == 0){
+				 System.out.println(ans);
+				 return;
+			 }
+		  }            
+		}
+		
+		 System.out.println(ans);
+	}
+}
