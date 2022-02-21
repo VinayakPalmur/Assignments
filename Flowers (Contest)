@@ -1,0 +1,38 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+import java.math.*;
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+					  int n;
+					  Scanner sc=new Scanner(System.in);
+					  n=sc.nextInt();
+					  int ans=0;
+					  int odd=0;
+					  int minn=Integer.MAX_VALUE;
+					  for(int i=0; i<n; i++)
+					  {
+						  int temp;
+						  temp=sc.nextInt();
+						  ans +=(temp%2 !=0) ? temp: temp-1;
+						  if (minn>temp)
+						  {
+							  minn=temp;
+						  }
+					  }
+					  if(n%2 !=0)
+					{
+						System.out.println(ans);
+					}
+					else
+					{
+						if(minn%2 !=0)
+						System.out.println(ans-minn);
+						else
+						System.out.println(ans - minn +1);
+					}
+					
+	}
+}
