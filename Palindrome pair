@@ -1,0 +1,46 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static long maxProduct(String str) {
+                      StringBuilder sb = new StringBuilder(str);
+        int len = sb.length();
+        int[] dpl = new int[len];
+        int[] dpr = new int[len];
+        modifiedOddManacher(sb.toString(), dpl);
+        modifiedOddManacher(sb.reverse().toString(), dpr);
+        long max=1;
+        for(int i=0;i<len-1;i++)
+            max=Math.max(max, (1+(dpl[i]-1)*2L)*(1+(dpr[len-(i+1)-1]-1)*2L));
+        return max;
+    }
+    static void modifiedOddManacher(String str, int[] dp){
+        int len = str.length();
+        int[] center = new int[len];
+        for(int l=0,r=-1,i=0;i<len;i++){
+            int radius = (i > r) ? 1 : Math.min(center[l+(r-i)], r-i+1);
+               while(i-radius>=0 && i+radius<len && str.charAt(i-radius)==str.charAt(i+radius)) {
+                  dp[i+radius] = radius+1;
+                  radius++;
+               }
+            center[i] = radius--;
+            if(i+radius>r){
+                l = i-radius;
+                r = i+radius;
+            }
+        }
+        for(int i=0, max=1;i<len;i++){
+            max = Math.max(max, dp[i]);
+            dp[i] = max;
+        }
+    }
+	public static void main (String[] args) {
+     Scanner sc=new Scanner(System.in);
+     String s=sc.next();
+     System.out.println(maxProduct(s));
+ 
+                      // Your code here
+	}
+}
