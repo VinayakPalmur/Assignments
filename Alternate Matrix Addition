@@ -1,0 +1,45 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+		Scanner scan = new Scanner(System.in);
+	    int n = scan.nextInt();
+	    int[][] matrix = new int[n][n];
+	    int blackSquare = 0;
+		int whiteSquare = 0;
+	    for(int i = 0; i < n; i++){
+	        for(int j = 0; j < n; j++){
+	            matrix[i][j] = scan.nextInt();
+	        }
+	    }
+	    for(int i = 0; i < n; i++){
+	            if(i % 2 == 0){
+	                for(int j = 0; j < n; j++){
+	                    if(j % 2 == 0){
+	                        blackSquare += matrix[i][j];
+	                    }
+	                    else{
+	                        whiteSquare += matrix[i][j];
+	                    }
+	                }
+	                
+	            }
+	            else{
+	                for(int j = 0; j < n; j++){
+	                    if(j % 2 != 0){
+	                        blackSquare += matrix[i][j];
+	                    }
+	                    else{
+	                        whiteSquare += matrix[i][j];
+	                    }
+	                }
+	            }
+	    }
+		System.out.println(blackSquare);
+	    System.out.println(whiteSquare);
+	}
+}
