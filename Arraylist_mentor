@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println("Array List Implementation");
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Rohan");
+		list.add("Rahul");
+		System.out.println(list.get(0));
+		list.set(1,"Rahul S");
+		System.out.println(list.get(1));
+		//list.remove(0);
+		//System.out.println(list.get(1));
+		
+		System.out.println(list.length());
+		
+		Collections.sort(list,Collections.reverseOrder());
+		
+		for(String name: list){
+		    System.out.println(name);
+		}
+		
+	}
+}
