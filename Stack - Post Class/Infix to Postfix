@@ -1,0 +1,89 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+
+//Function to return precedence of operators 
+	static int prec(char c) 
+    { 
+		if(c == '^') 
+		return 3; 
+		else if(c == '*' || c == '/') 
+		return 2; 
+		else if(c == '+' || c == '-') 
+		return 1; 
+		else
+		return -1; 
+    }
+
+	  
+// The main function to convert infix expression 
+//to postfix expression 
+static void infixToPostfix(String s) 
+{ 
+	Stack<Character> st = new Stack<>();
+	st.push('N');//delim
+    int l = s.length(); 
+    String ns = new String(); //resultant string
+    for(int i = 0; i < l; i++) 
+    { 
+        // If the scanned character is an operand, add it to output string. 
+        if((s.charAt(i) >= 'a' && s.charAt(i) <= 'z')||(s.charAt(i) >= 'A'
+		 && s.charAt(i) <= 'Z')) 
+        ns+=s.charAt(i); 
+  
+        // If the scanned character is an ‘(‘, push it to the stack. 
+        else if(s.charAt(i) == '(') 
+          
+        st.push('('); 
+          
+        // If the scanned character is an ‘)’, pop and to output string from the stack 
+        // until an ‘(‘ is encountered. 
+        else if(s.charAt(i) == ')') 
+        { 
+            while(st.peek() != 'N' && st.peek() != '(') 
+            { 
+                char c = st.peek();
+                st.pop(); 
+               ns += c; 
+            } 
+            if(st.peek() == '(') 
+            { 
+                char c = st.peek(); 
+                st.pop(); 
+            } 
+        } 
+          
+        //If an operator is scanned 
+        else{                             //'-'                  '+'
+            while(st.peek() != 'N' && prec(s.charAt(i)) <= prec(st.peek())) 
+            { 
+                char c = st.peek(); 
+                st.pop(); 
+                ns += c;  //sum += 1; 
+            } 
+            st.push(s.charAt(i)); 
+        } 
+  
+    } 
+    //Pop all the remaining elements from the stack 
+    while(st.peek() != 'N') 
+    { 
+        char c = st.peek(); 
+        st.pop(); 
+        ns += c; 
+    } 
+
+	System.out.println(ns);  
+} 
+
+	public static void main (String[] args) {
+	// Your code here
+		String exp;//infix
+		Scanner sc = new Scanner(System.in);
+		exp=sc.next();
+		infixToPostfix(exp); 
+	}
+}
