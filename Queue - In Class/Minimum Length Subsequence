@@ -1,0 +1,88 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static int findUnique (String str, int left, int right) {
+		int[] alphas = new int[26];
+		int uniques = 0;
+
+		int prev = left;
+		for (int i = 0; i < 26; i ++) {
+			boolean found = false;
+
+			for (int index = prev; index < right && found == false; index ++) {
+				if (found == false && str.charAt(index) - 'a' == i) {
+					prev = index + 1;
+					found = true;
+					uniques += 1;
+				}
+			}
+		}
+/*
+		for (int i = left; i < right; i ++) {
+			int index = str.charAt(i) - 'a';
+			
+			System.out.println("Check for: " + str.charAt(i));
+			
+			if (alphas[index] == 0) {
+				for (int prev = 0; prev < index; prev ++) {
+					if (alphas[prev] == 0) {
+						System.out.println("\n\n");
+						return -1;
+					}
+				}
+				uniques += 1;
+				alphas[index] = 1;
+			} else {
+				alphas[index] += 1;
+			}
+		}
+*/
+		//System.out.println("UNIQUES: " + uniques + "\n \n");
+		return uniques;
+	}
+
+	public static void main (String[] args) {
+		// start of the runtime
+		long start = System.nanoTime();
+	 
+        Scanner s = new Scanner(System.in);
+		String str = s.next(); 
+
+		int left = 0;
+		int right = 26;
+		int leastSize = str.length() + 1;
+
+		while (right <= str.length() && left < right) {
+			
+			// check for runtime limits
+			long end = System.nanoTime();
+			long elapsedTime = end - start;
+			
+			// if program takes more than time allotted, give -1
+			if (elapsedTime >= 907592098) {
+				System.out.println(-1);
+				return;
+			}
+
+			if (findUnique(str, left, right) == 26) {
+				if (right - left < leastSize) {
+					leastSize = right - left;
+				}
+				left += 1;
+			} else {
+				right += 1;
+			}
+		}
+
+		if (leastSize == str.length() + 1) {
+			System.out.println(-1);
+		} else {
+			System.out.println(leastSize);
+		}
+
+		return;
+	}
+}
